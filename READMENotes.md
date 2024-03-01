@@ -32,6 +32,19 @@ F.  Add a “Buy Now” button to your product list. Your “Buy Now” button m
 •  The button should decrement the inventory of that product by one. It should not affect the inventory of any of the associated parts.
 •  Display a message that indicates the success or failure of a purchase.
 
+Location: mainscreen.html
+Lines: 92
+Change: added buy now button
+
+Location: buyNowController.java
+Changes: created buy now controller and added mapping for buying a product including inventory update logic.
+
+Location: buySuccess.html
+Changes: created page for a successful purchase.
+
+Location: error.html
+Changes: created a page in case product is no longer in stock
+
 
 G.  Modify the parts to track maximum and minimum inventory by doing the following:
 •  Add additional fields to the part entity for maximum and minimum inventory.
