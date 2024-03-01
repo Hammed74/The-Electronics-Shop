@@ -61,12 +61,34 @@ public class BootStrapData implements CommandLineRunner {
         }
 
 
-        Product bicycle= new Product("bicycle",100.0,15);
-        Product unicycle= new Product("unicycle",100.0,15);
-        Product tricycle= new Product("tricycle",100.0,15);
-        productRepository.save(bicycle);
-        productRepository.save(unicycle);
-        productRepository.save(tricycle);
+        //creating products
+        Product MacPC= new Product("MacPC",800.0,5);
+        Product DellPC= new Product("DellPC",500.0,5);
+        Product HPPC= new Product("HPPC",550.0,5);
+        Product LenovoPC= new Product("LenovoPC",900.0,5);
+        Product WindowsPC= new Product("WindowsPC",700.0,5);
+
+        //creating parts
+        Part keyboard = new Part("keyboard", 15.0, 5);
+        Part mouse = new Part("Mouse", 10.0, 5);
+        Part monitor = new Part("Monitor", 8.0, 5);
+        Part computer = new Part("Computer", 300.0, 5);
+        Part webcam = new Part("Webcam", 20.0, 5);
+
+        if(productRepository.count() == 0 && partRepository.count() == 0) {
+
+            productRepository.save(MacPC);
+            productRepository.save(DellPC);
+            productRepository.save(HPPC);
+            productRepository.save(LenovoPC);
+            productRepository.save(WindowsPC);
+
+            partRepository.save(keyboard);
+            partRepository.save(mouse);
+            partRepository.save(monitor);
+            partRepository.save(computer);
+            partRepository.save(webcam);
+        }
 
 
         System.out.println("Started in Bootstrap");
