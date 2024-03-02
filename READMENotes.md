@@ -101,6 +101,12 @@ Changes: added logic to redirect to proper page if inventory is too high or too 
 
 
 I.  Add at least two unit tests for the maximum and minimum fields to the PartTest class in the test package.
+Location: PartTest.java
+Lines: 161-173
+Changes: Added unit tests to check for min and max values.
+
 
 
 J.  Remove the class files for any unused validators in order to clean your code.
+Location: Validators.DeletePartValidator.java
+Change: deleted file because it was unused.
