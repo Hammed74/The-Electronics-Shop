@@ -37,9 +37,11 @@ public class AddInhousePartController{
         theModel.addAttribute("inhousepart",part);
         if(theBindingResult.hasErrors()){
             return "InhousePartForm";
-        } else if (!part.invChecker()) {
-            return "invError";
-        } else{
+        } else if (part.invChecker().equals("tooLow")) {
+            return "invTooLow";
+        } else if (part.invChecker().equals("tooHigh")) {
+            return "invTooHigh";
+        }else{
         InhousePartService repo=context.getBean(InhousePartServiceImpl.class);
         InhousePart ip=repo.findById((int)part.getId());
         if(ip!=null)part.setProducts(ip.getProducts());

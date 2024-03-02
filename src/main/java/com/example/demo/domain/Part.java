@@ -112,8 +112,13 @@ public class Part implements Serializable {
         this.minInv = minInv;
     }
 
-    public boolean invChecker() {
-        return this.inv <= this.maxInv && this.inv >= this.minInv;
+    public String invChecker() {
+        if(this.inv < this.minInv){
+            return "tooLow";
+        } else if(this.inv > this.maxInv){
+            return "tooHigh";
+        }
+        return null;
     }
 
     public Set<Product> getProducts() {
