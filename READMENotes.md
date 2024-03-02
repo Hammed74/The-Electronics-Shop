@@ -53,6 +53,38 @@ G.  Modify the parts to track maximum and minimum inventory by doing the followi
 •  Rename the file the persistent storage is saved to.
 •  Modify the code to enforce that the inventory is between or at the minimum and maximum value.
 
+Location: OutsourcedPartForm.html
+Lines: 25-29
+Changes: Added input fields for max and min inventory
+
+Location: InhousePartForm.html
+Lines: 24-28
+Changes: Added input fields for max and min inventory
+
+Locattion Part.java
+Lines: 33-37, 47, 51-52, 55, 60-61
+Changes: added min and max inv to part entity
+
+Location Part.java
+Lines: 96-106
+Changes: added getter and setter methods for min and max inventory
+
+Location application.properties
+Lines: 6
+Changes: renamed database, changed url
+
+Location: Part.java
+Lines: 115-117
+Changes: added logic to make sure inventory falls between max and min
+
+Location: AddInhousePartController.java
+Lines: 44-45
+Changes: Added inv validator logic to addinhousepartcontroller.java
+
+Location: AddOutsourcedPartController.java
+Lines: 46-48
+Changes: Added inv validator logic to addOutsourcePartcontroller.java
+
 
 H.  Add validation for between or at the maximum and minimum fields. The validation must include the following:
 •  Display error messages for low inventory when adding and updating parts if the inventory is less than the minimum number of parts.

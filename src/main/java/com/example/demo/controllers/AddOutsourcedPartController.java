@@ -37,13 +37,15 @@ public class AddOutsourcedPartController {
         return "OutsourcedPartForm";
     }
 
+
     @PostMapping("/showFormAddOutPart")
     public String submitForm(@Valid @ModelAttribute("outsourcedpart") OutsourcedPart part, BindingResult bindingResult, Model theModel){
         theModel.addAttribute("outsourcedpart",part);
         if(bindingResult.hasErrors()){
             return "OutsourcedPartForm";
-        }
-        else{
+        } else if (!part.invChecker()) {
+            return "invError";
+        } else{
         OutsourcedPartService repo=context.getBean(OutsourcedPartServiceImpl.class);
         OutsourcedPart op=repo.findById((int)part.getId());
         if(op!=null)part.setProducts(op.getProducts());

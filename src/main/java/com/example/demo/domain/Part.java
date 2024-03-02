@@ -3,6 +3,7 @@ package com.example.demo.domain;
 import com.example.demo.validators.ValidDeletePart;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -24,10 +25,17 @@ public class Part implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
     String name;
-    @Min(value = 0, message = "Price value must be positive")
+    @Min(value = 1, message = "Price value must be positive")
     double price;
-    @Min(value = 0, message = "Inventory value must be positive")
+    @Min(value = 1, message = "Inventory must be more than 0")
+    int minInv;
+
+    @Max(value = 50, message = "Inventory value cannot be above 50")
+    int maxInv;
+
+    @Min(value = 1, message = "Inventory Error")
     int inv;
+
 
     @ManyToMany
     @JoinTable(name="product_part", joinColumns = @JoinColumn(name="part_id"),
@@ -37,17 +45,22 @@ public class Part implements Serializable {
     public Part() {
     }
 
-    public Part(String name, double price, int inv) {
+    public Part(String name, double price, int inv, int minInv, int maxInv) {
         this.name = name;
         this.price = price;
+        this.maxInv = maxInv;
+        this.minInv = minInv;
         this.inv = inv;
     }
 
-    public Part(long id, String name, double price, int inv) {
+    public Part(long id, String name, double price, int inv, int minInv, int maxInv) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.maxInv = maxInv;
+        this.minInv = minInv;
         this.inv = inv;
+
     }
 
     public long getId() {
@@ -78,8 +91,29 @@ public class Part implements Serializable {
         return inv;
     }
 
+
     public void setInv(int inv) {
         this.inv = inv;
+    }
+
+    public int getMaxInv() {
+        return maxInv;
+    }
+
+    public void setMaxInv(int maxInv) {
+        this.maxInv = maxInv;
+    }
+
+    public int getMinInv() {
+        return minInv;
+    }
+
+    public void setMinInv(int minInv) {
+        this.minInv = minInv;
+    }
+
+    public boolean invChecker() {
+        return this.inv <= this.maxInv && this.inv >= this.minInv;
     }
 
     public Set<Product> getProducts() {

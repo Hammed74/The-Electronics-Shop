@@ -22,7 +22,7 @@ public class BuyNowController {
 
        int count = theProduct.getInv();
        if(count == 0) {
-       return "redirect:/error";
+       return "purchaseError";
        }
 
        count = count - 1;

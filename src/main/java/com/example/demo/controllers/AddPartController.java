@@ -29,7 +29,7 @@ public class AddPartController {
     @GetMapping("/showPartFormForUpdate")
     public String showPartFormForUpdate(@RequestParam("partID") int theId,Model theModel){
 
-        PartService repo=context.getBean(PartServiceImpl.class);
+        PartService repo = context.getBean(PartServiceImpl.class);
         OutsourcedPartService outsourcedrepo=context.getBean(OutsourcedPartServiceImpl.class);
         InhousePartService inhouserepo=context.getBean(InhousePartServiceImpl.class);
 
@@ -64,5 +64,4 @@ public class AddPartController {
             return "negativeerror";
         }
     }
-
 }

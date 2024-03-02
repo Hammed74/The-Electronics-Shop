@@ -6,6 +6,7 @@ import com.example.demo.domain.Product;
 import com.example.demo.repositories.OutsourcedPartRepository;
 import com.example.demo.repositories.PartRepository;
 import com.example.demo.repositories.ProductRepository;
+import com.example.demo.service.PartService;
 import com.example.demo.service.OutsourcedPartService;
 import com.example.demo.service.OutsourcedPartServiceImpl;
 import com.example.demo.service.ProductService;
@@ -27,6 +28,8 @@ public class BootStrapData implements CommandLineRunner {
 
     private final PartRepository partRepository;
     private final ProductRepository productRepository;
+
+    private PartService partService;
 
     private final OutsourcedPartRepository outsourcedPartRepository;
 
@@ -69,11 +72,11 @@ public class BootStrapData implements CommandLineRunner {
         Product WindowsPC= new Product("WindowsPC",700.0,5);
 
         //creating parts
-        Part keyboard = new Part("keyboard", 15.0, 5);
-        Part mouse = new Part("Mouse", 10.0, 5);
-        Part monitor = new Part("Monitor", 8.0, 5);
-        Part computer = new Part("Computer", 300.0, 5);
-        Part webcam = new Part("Webcam", 20.0, 5);
+        Part keyboard = new Part("keyboard", 15.0, 5,1, 49);
+        Part mouse = new Part("Mouse", 10.0, 5, 1, 49);
+        Part monitor = new Part("Monitor", 8.0, 5, 1, 49);
+        Part computer = new Part("Computer", 300.0, 5, 1 , 49);
+        Part webcam = new Part("Webcam", 20.0, 5, 1, 49);
 
         if(productRepository.count() == 0 && partRepository.count() == 0) {
 
@@ -82,6 +85,7 @@ public class BootStrapData implements CommandLineRunner {
             productRepository.save(HPPC);
             productRepository.save(LenovoPC);
             productRepository.save(WindowsPC);
+
 
             partRepository.save(keyboard);
             partRepository.save(mouse);

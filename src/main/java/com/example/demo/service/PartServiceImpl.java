@@ -65,4 +65,5 @@ public class PartServiceImpl implements PartService{
         Long theIdl=(long)theId;
         partRepository.deleteById(theIdl);
     }
+
 }
