@@ -108,3 +108,5 @@ Changes: Added unit tests to check for min and max values.
 
 
 J.  Remove the class files for any unused validators in order to clean your code.
+Location: Validators.DeletePartValidator.java
+Change: deleted file because it was unused.
