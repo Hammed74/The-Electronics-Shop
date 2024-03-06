@@ -121,3 +121,9 @@ G.
 Location: Part.java
 Lines: 121
 Changes: allowed to add in house part when submit button is clicked.
+
+
+H.
+Location: AddPartController
+Lines: 36 - 68
+Changes: Validation for min and max is now present for updating and adding parts.

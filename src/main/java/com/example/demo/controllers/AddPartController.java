@@ -33,21 +33,36 @@ public class AddPartController {
         OutsourcedPartService outsourcedrepo=context.getBean(OutsourcedPartServiceImpl.class);
         InhousePartService inhouserepo=context.getBean(InhousePartServiceImpl.class);
 
-        boolean inhouse=true;
+        String inhouse = "";
         List<OutsourcedPart> outsourcedParts=outsourcedrepo.findAll();
         for(OutsourcedPart outsourcedPart:outsourcedParts) {
-            if(outsourcedPart.getId()==theId)inhouse=false;
+            if (outsourcedPart.getId() == theId) {
+                inhouse = "outsourced";
+                break;
+            };
         }
+
+        List<InhousePart> inhouseParts=inhouserepo.findAll();
+        for(InhousePart inhousePart:inhouseParts) {
+            if (inhousePart.getId() == theId) {
+                inhouse = "inhouse";
+                break;
+            }
+        }
+
         String formtype;
-        if(inhouse){
+        if(inhouse.equals("inhouse")){
             InhousePart inhousePart=inhouserepo.findById(theId);
             theModel.addAttribute("inhousepart",inhousePart);
             formtype="InhousePartForm";
-        }
-        else{
+        } else if(inhouse.equals("outsourced")){
             OutsourcedPart outsourcedPart=outsourcedrepo.findById(theId);
             theModel.addAttribute("outsourcedpart",outsourcedPart);
             formtype="OutsourcedPartForm";
+        } else{
+            Part inhousePart=repo.findById(theId);
+            theModel.addAttribute("inhousepart",inhousePart);
+            formtype="InhousePartForm";
         }
         return formtype;
     }

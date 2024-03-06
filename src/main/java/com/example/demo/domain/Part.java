@@ -118,7 +118,7 @@ public class Part implements Serializable {
         } else if(this.inv > this.maxInv){
             return "tooHigh";
         }
-        return "mainscreen";
+        return "confirmationaddpart";
     }
 
     public Set<Product> getProducts() {
